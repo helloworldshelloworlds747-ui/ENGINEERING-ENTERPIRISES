@@ -1,0 +1,6 @@
+{
+  "name": "Engineering Enterprises & Veloair",
+  "description": "Official corporate portal for Engineering Enterprises & Veloair Envirotech - HVAC, Evaporative Cooling, Fire Fighting, Mechanical & Electrical Engineering Solutions.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

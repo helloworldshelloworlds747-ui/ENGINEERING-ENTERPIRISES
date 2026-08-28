@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="100%" height="100%">
+  <!-- Background Canvas -->
+  <rect width="500" height="500" fill="#FFFFFF"/>
+  
+  <!-- Emblem Center Box (200x200 positioned at x=150, y=80) -->
+  <g transform="translate(150, 70)">
+    <rect width="200" height="200" fill="#24225A" rx="12"/>
+    <g stroke="#FFFFFF" stroke-width="5.5" stroke-linecap="square" stroke-linejoin="miter">
+      <!-- Central vertical line -->
+      <line x1="100" y1="0" x2="100" y2="200" stroke-width="6"/>
+      <!-- Left & Right vertical lines -->
+      <line x1="52" y1="0" x2="52" y2="200"/>
+      <line x1="148" y1="0" x2="148" y2="200"/>
+      <!-- Left diagonals -->
+      <line x1="0" y1="52" x2="52" y2="0"/>
+      <line x1="0" y1="52" x2="100" y2="100"/>
+      <line x1="0" y1="148" x2="100" y2="100"/>
+      <line x1="0" y1="148" x2="52" y2="200"/>
+      <!-- Right diagonals -->
+      <line x1="200" y1="52" x2="148" y2="0"/>
+      <line x1="200" y1="52" x2="100" y2="100"/>
+      <line x1="200" y1="148" x2="100" y2="100"/>
+      <line x1="200" y1="148" x2="148" y2="200"/>
+    </g>
+  </g>
+
+  <!-- Typography Text -->
+  <text x="250" y="345" font-family="'Outfit', 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif" font-weight="900" font-size="38" fill="#0B1B2B" text-anchor="middle" letter-spacing="3">ENGINEERING</text>
+  <text x="250" y="395" font-family="'Outfit', 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif" font-weight="900" font-size="38" fill="#0B1B2B" text-anchor="middle" letter-spacing="3">ENTERPRISES</text>
+  
+  <!-- Subtitle Tagline -->
+  <text x="250" y="435" font-family="'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif" font-weight="700" font-size="14" fill="#1677FF" text-anchor="middle" letter-spacing="4">VELOAIR ENVIROTECH | SINCE 1992</text>
+</svg>
