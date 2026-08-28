@@ -20,16 +20,19 @@ export const ScrollProgressBar: React.FC = () => {
 
       // Detect current section for subtle context
       const sections = [
+        { id: 'hero', name: 'Engineering Enterprises & Veloair' },
         { id: 'products', name: 'Products & Solutions' },
         { id: 'energy-calculator', name: 'ROI & Energy Calculator' },
-        { id: 'about', name: 'Engineering Leadership' },
+        { id: 'about-company', name: 'Engineering Leadership & CEO' },
+        { id: 'about', name: 'Engineering Leadership & CEO' },
         { id: 'applications', name: 'Industrial Applications' },
-        { id: 'insights', name: 'Technical Insights' },
-        { id: 'technical-insights', name: 'Technical Insights' },
+        { id: 'roadmap', name: 'Execution Roadmap' },
+        { id: 'insights', name: 'Technical Insights & White Papers' },
+        { id: 'technical-insights', name: 'Technical Insights & White Papers' },
         { id: 'faqs', name: 'Technical FAQs' },
         { id: 'certifications', name: 'PEC & ISO Certifications' },
         { id: 'clients', name: 'Client Testimonials' },
-        { id: 'contact', name: 'Contact & Network' },
+        { id: 'contact', name: 'Contact & Nationwide Network' },
       ];
 
       const currentScrollPos = window.scrollY + 200;

@@ -2,8 +2,6 @@ import React from 'react';
 import { 
   ShieldCheck, 
   Award, 
-  FileCheck, 
-  ExternalLink, 
   CheckCircle,
   Eye
 } from 'lucide-react';
@@ -82,7 +80,7 @@ export const CertificationsSection: React.FC<CertificationsSectionProps> = ({ on
                     e.stopPropagation();
                     onOpenCertModal(cert.id);
                   }}
-                  className="text-xs font-bold text-[#1677FF] hover:text-blue-700 flex items-center gap-1 transition-colors cursor-pointer"
+                  className="min-h-[44px] px-3 py-2 rounded-xl bg-blue-50/60 hover:bg-blue-100/80 active:bg-blue-200/80 text-xs font-bold text-[#1677FF] hover:text-blue-700 flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
                 >
                   <Eye className="w-3.5 h-3.5" />
                   <span>Inspect Certificate</span>

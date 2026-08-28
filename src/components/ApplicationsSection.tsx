@@ -3,17 +3,11 @@ import { motion } from 'motion/react';
 import { 
   CheckCircle2, 
   ArrowRight, 
-  ShieldCheck, 
-  Sparkles,
   Wind,
   Layers,
-  ZoomIn,
-  X,
   PhoneCall,
   BookOpen,
   Award,
-  ExternalLink,
-  ChevronRight,
   Compass,
   ArrowUpRight
 } from 'lucide-react';
@@ -239,7 +233,7 @@ export const ApplicationsSection: React.FC<ApplicationsSectionProps> = ({
                 <button
                   type="button"
                   onClick={() => setModalApp(activeApp)}
-                  className="w-full py-3.5 px-4 rounded-xl bg-[#0B1B2B] hover:bg-[#162738] text-white font-bold text-xs sm:text-sm transition-all shadow text-center flex items-center justify-center gap-2 cursor-pointer"
+                  className="w-full min-h-[48px] py-3.5 px-4 rounded-xl bg-[#0B1B2B] hover:bg-[#162738] active:bg-[#071320] text-white font-bold text-xs sm:text-sm transition-all shadow text-center flex items-center justify-center gap-2 cursor-pointer"
                 >
                   <BookOpen className="w-4 h-4 text-cyan-400" />
                   <span>Open {activeApp.title} Project Details</span>
@@ -248,7 +242,7 @@ export const ApplicationsSection: React.FC<ApplicationsSectionProps> = ({
                 <button
                   type="button"
                   onClick={() => onSelectApplicationForQuote(activeApp.title)}
-                  className="w-full py-3.5 px-4 rounded-xl bg-[#1677FF] hover:bg-[#0E65E5] text-white font-bold text-xs sm:text-sm transition-all shadow text-center flex items-center justify-center gap-2 cursor-pointer"
+                  className="w-full min-h-[48px] py-3.5 px-4 rounded-xl bg-[#1677FF] hover:bg-[#0E65E5] active:bg-blue-700 text-white font-bold text-xs sm:text-sm transition-all shadow text-center flex items-center justify-center gap-2 cursor-pointer"
                 >
                   <span>Request {activeApp.title} Quote</span>
                   <ArrowRight className="w-4 h-4" />
@@ -258,7 +252,7 @@ export const ApplicationsSection: React.FC<ApplicationsSectionProps> = ({
                   href={`https://wa.me/923008425772?text=Hello%20Engineering%20Enterprises%2C%20I%20would%20like%20a%20solution%20proposal%20for%3A%20${encodeURIComponent(activeApp.title)}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full py-3.5 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs sm:text-sm transition-all text-center flex items-center justify-center gap-2 shadow"
+                  className="w-full min-h-[48px] py-3.5 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800 text-white font-bold text-xs sm:text-sm transition-all text-center flex items-center justify-center gap-2 shadow"
                 >
                   <PhoneCall className="w-4 h-4" />
                   <span>Inquire on WhatsApp</span>

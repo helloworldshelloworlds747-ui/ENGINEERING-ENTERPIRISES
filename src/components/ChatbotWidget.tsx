@@ -5,15 +5,8 @@ import {
   Send, 
   Sparkles, 
   Bot, 
-  User, 
   Phone, 
-  Maximize2, 
-  Minimize2,
-  RefreshCw,
-  Wind,
-  Flame,
-  Zap,
-  ArrowRight
+  ArrowRight 
 } from 'lucide-react';
 import { COMPANY_INFO } from '../data/engineeringData';
 

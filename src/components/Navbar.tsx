@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { 
   Phone, 
-  Mail, 
   MapPin, 
   Menu, 
   X, 
@@ -10,7 +9,6 @@ import {
   ShieldCheck, 
   Sparkles,
   ExternalLink,
-  MessageSquare,
   Wind,
   Flame,
   Zap,
@@ -18,11 +16,9 @@ import {
   Award,
   Building2,
   Factory,
-  Layers,
   FileText,
   Calculator,
   HelpCircle,
-  Clock,
   ArrowRight,
   CheckCircle2
 } from 'lucide-react';
@@ -79,7 +75,7 @@ export const Navbar: React.FC<NavbarProps> = ({
     if (element) {
       const headerOffset = isScrolled ? 70 : 100;
       const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+      const offsetPosition = elementPosition + (window.scrollY || window.pageYOffset || 0) - headerOffset;
       window.scrollTo({
         top: offsetPosition,
         behavior: 'smooth'
@@ -94,114 +90,41 @@ export const Navbar: React.FC<NavbarProps> = ({
   return (
     <header className={`sticky top-0 z-50 transition-all duration-300 ${
       isScrolled 
-        ? 'bg-white/95 backdrop-blur-xl border-b border-[#E2E6EA] shadow-md' 
-        : 'bg-white border-b border-[#E2E6EA]'
+        ? 'bg-white/95 backdrop-blur-xl border-b border-[#E2E8F0] shadow-md' 
+        : 'bg-white border-b border-[#E2E8F0]'
     }`}>
-      {/* Top Notification / Contact Bar (Smoothly collapses or condenses on scroll) */}
-      <div className={`bg-[#0B1B2B] text-slate-300 text-xs transition-all duration-300 overflow-hidden ${
-        isScrolled ? 'max-h-0 py-0 opacity-0' : 'max-h-12 py-2 opacity-100 border-b border-slate-800'
-      }`}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-2">
-          <div className="flex flex-wrap items-center justify-center md:justify-start gap-4">
-            <a 
-              href="tel:+924235956625" 
-              className="flex items-center gap-1.5 hover:text-[#1677FF] transition-colors"
-            >
-              <Phone className="w-3.5 h-3.5 text-[#1677FF]" />
-              <span>+92 (42) 3595 6625-6</span>
-            </a>
-            <span className="hidden sm:inline text-slate-700">|</span>
-            <a 
-              href={COMPANY_INFO.whatsappUrl} 
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-1.5 hover:text-emerald-300 transition-colors font-semibold text-emerald-400"
-            >
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-              <span>WhatsApp: +92 (300) 8425 772</span>
-            </a>
-            <span className="hidden sm:inline text-slate-700">|</span>
-            <a 
-              href="mailto:info@engineeringenterprises.com.pk" 
-              className="hidden lg:flex items-center gap-1.5 hover:text-[#1677FF] transition-colors"
-            >
-              <Mail className="w-3.5 h-3.5 text-[#1677FF]" />
-              <span>info@engineeringenterprises.com.pk</span>
-            </a>
-          </div>
-
-          <div className="flex items-center gap-4">
-            <div 
-              onClick={() => onOpenCertModal('pec-license')}
-              className="hidden sm:flex items-center gap-1.5 bg-[#14273C] px-2.5 py-0.5 rounded-full text-slate-200 border border-slate-700/60 cursor-pointer hover:border-[#1677FF] transition-colors"
-            >
-              <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
-              <span className="font-bold text-[11px]">PEC License # 20000 (Category C4)</span>
-            </div>
-
-            {/* Social Media Links */}
-            <div className="flex items-center gap-2">
-              <a
-                href={COMPANY_INFO.facebookUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Facebook Page"
-                className="w-6 h-6 rounded-full bg-[#14273C] text-slate-300 flex items-center justify-center hover:bg-[#1677FF] hover:text-white transition-all shadow-xs"
-                title="Facebook: Engineering Enterprises"
-              >
-                <svg className="w-3 h-3 fill-current" viewBox="0 0 24 24">
-                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-                </svg>
-              </a>
-              <a
-                href={COMPANY_INFO.linkedinUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="LinkedIn Page"
-                className="w-6 h-6 rounded-full bg-[#14273C] text-slate-300 flex items-center justify-center hover:bg-[#1677FF] hover:text-white transition-all shadow-xs"
-                title="LinkedIn: Engineering Enterprises"
-              >
-                <svg className="w-3 h-3 fill-current" viewBox="0 0 24 24">
-                  <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-                </svg>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-
       {/* Main Navbar Bar */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className={`flex justify-between items-center transition-all duration-300 ${
-          isScrolled ? 'h-16' : 'h-20'
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+        <div className={`flex justify-between items-center transition-all duration-300 gap-2 ${
+          isScrolled ? 'h-16' : 'h-16 sm:h-20'
         }`}>
           
           {/* Official Engineering Enterprises Logo & Emblem */}
           <div 
             onClick={() => scrollToSection('hero')} 
-            className="flex items-center gap-3 cursor-pointer group select-none"
+            className="flex items-center gap-2 sm:gap-3 cursor-pointer group select-none min-w-0 flex-1 max-w-[calc(100%-56px)]"
           >
             {/* Authentic Engineering Enterprises Geometric Structural Emblem */}
-            <div className="relative group-hover:scale-105 transition-all duration-300">
-              <CompanyLogoMark className="w-11 h-11 shadow-md shadow-[#24225A]/25 border border-slate-700/60 group-hover:border-[#1677FF]" />
+            <div className="relative group-hover:scale-105 transition-all duration-300 shrink-0">
+              <CompanyLogoMark className="w-9 h-9 sm:w-11 sm:h-11 shadow-md shadow-[#24225A]/25 border border-slate-700/60 group-hover:border-[#1677FF]" />
               <span className="absolute -top-1 -right-1 w-2.5 h-2.5 bg-emerald-500 border-2 border-white rounded-full"></span>
             </div>
             
-            <div className="flex flex-col">
-              <div className="flex items-baseline gap-1.5">
-                <span className="text-xl sm:text-[22px] font-black tracking-tight text-[#0B1B2B] font-display">
+            <div className="flex flex-col min-w-0">
+              <div className="flex items-baseline gap-1 sm:gap-1.5 truncate">
+                <span className="text-sm sm:text-lg md:text-[22px] font-black tracking-tight text-[#0B1B2B] font-display whitespace-nowrap">
                   ENGINEERING
                 </span>
-                <span className="text-xl sm:text-[22px] font-black tracking-tight text-[#1677FF] group-hover:text-blue-600 transition-colors">
+                <span className="text-sm sm:text-lg md:text-[22px] font-black tracking-tight text-[#1677FF] group-hover:text-blue-600 transition-colors whitespace-nowrap">
                   ENTERPRISES
                 </span>
               </div>
-              <div className="flex items-center gap-2">
-                <span className="text-[10px] tracking-widest text-[#1677FF] font-bold uppercase">
+              <div className="flex items-center gap-1.5 sm:gap-2 truncate">
+                <span className="text-[9px] sm:text-[10px] tracking-wider sm:tracking-widest text-[#1677FF] font-bold uppercase truncate">
                   Veloair Envirotech
                 </span>
-                <span className="text-[10px] text-[#D4D9DE]">|</span>
-                <span className="text-[10px] text-[#6B747C] font-semibold">Since 1992</span>
+                <span className="text-[9px] sm:text-[10px] text-[#D4D9DE]">|</span>
+                <span className="text-[9px] sm:text-[10px] text-[#6B747C] font-semibold shrink-0">Since 1992</span>
               </div>
             </div>
           </div>
@@ -700,13 +623,21 @@ export const Navbar: React.FC<NavbarProps> = ({
           </div>
 
           {/* Mobile Menu Trigger */}
-          <div className="flex items-center gap-2 lg:hidden">
+          <div className="flex items-center gap-2 lg:hidden shrink-0">
             <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="min-h-[44px] min-w-[44px] p-2.5 rounded-2xl text-[#0B1B2B] bg-[#F5F6F3] hover:bg-[#E2E6EA] active:scale-95 transition-all flex items-center justify-center cursor-pointer border border-[#E2E6EA]"
-              aria-label="Toggle menu"
+               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+               className="min-h-[44px] min-w-[44px] p-2.5 rounded-2xl text-[#0B1B2B] bg-[#F0F7FF] hover:bg-[#D0E2FF] active:bg-[#B9D5FD] active:scale-95 transition-all flex items-center justify-center cursor-pointer border border-[#1677FF]/30 shrink-0 shadow-xs"
+               aria-label={mobileMenuOpen ? "Close navigation menu" : "Open main navigation menu"}
+               aria-expanded={mobileMenuOpen}
+               aria-controls="mobile-navigation-drawer"
+               aria-haspopup="dialog"
+               id="mobile-nav-menu-button"
             >
-              {mobileMenuOpen ? <X className="w-6 h-6 text-[#0B1B2B]" /> : <Menu className="w-6 h-6 text-[#0B1B2B]" />}
+              {mobileMenuOpen ? (
+                <X className="w-6 h-6 text-[#1677FF]" aria-hidden="true" />
+              ) : (
+                <Menu className="w-6 h-6 text-[#0B1B2B]" aria-hidden="true" />
+              )}
             </button>
           </div>
         </div>
@@ -714,24 +645,31 @@ export const Navbar: React.FC<NavbarProps> = ({
 
       {/* Premium Mobile Full Menu Drawer */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-white border-t border-[#E2E6EA] px-4 pt-3.5 pb-10 space-y-4 shadow-2xl max-h-[85vh] overflow-y-auto animate-in slide-in-from-top-4 duration-200">
+        <nav
+          id="mobile-navigation-drawer"
+          aria-label="Mobile site navigation"
+          role="navigation"
+          className="lg:hidden bg-white border-t border-[#E2E6EA] px-4 pt-3.5 pb-10 space-y-4 shadow-2xl max-h-[85vh] overflow-y-auto animate-in slide-in-from-top-4 duration-200"
+        >
           
           {/* Quick Header in Mobile with Touch Contact Pills */}
-          <div className="bg-[#0B1B2B] text-white p-3.5 rounded-2xl border border-[#14273C] space-y-3">
+          <div className="bg-[#0B1B2B] text-white p-3.5 rounded-2xl border border-[#14273C] space-y-3" role="region" aria-label="Company credentials and quick contact">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" aria-hidden="true"></span>
                 <span className="text-xs font-bold uppercase tracking-wider text-slate-200">Engineering Enterprises</span>
               </div>
-              <div 
+              <button
+                type="button"
                 onClick={() => {
                   setMobileMenuOpen(false);
                   onOpenCertModal('pec-license');
                 }}
+                aria-label="View Pakistan Engineering Council C4 Category license certificate"
                 className="text-[11px] font-bold text-emerald-300 bg-emerald-950/80 px-2.5 py-1 rounded-full border border-emerald-500/40 cursor-pointer"
               >
                 PEC C4 #20000
-              </div>
+              </button>
             </div>
 
             {/* Quick 1-tap dial and WhatsApp buttons on mobile */}
@@ -740,54 +678,65 @@ export const Navbar: React.FC<NavbarProps> = ({
                 href={COMPANY_INFO.whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Connect with engineering technical team on WhatsApp"
                 className="min-h-[44px] px-3 py-2 rounded-xl bg-emerald-600 active:bg-emerald-700 text-white font-bold text-xs flex items-center justify-center gap-1.5 shadow-sm active:scale-[0.98] transition-all"
               >
                 <span>WhatsApp Tech</span>
               </a>
 
               <button
+                type="button"
                 onClick={() => {
                   setMobileMenuOpen(false);
                   onOpenChat();
                 }}
+                aria-label="Open AI Engineering Consultant chat assistant"
                 className="min-h-[44px] px-3 py-2 rounded-xl bg-[#1677FF] active:bg-blue-700 text-white font-bold text-xs flex items-center justify-center gap-1.5 shadow-sm active:scale-[0.98] transition-all cursor-pointer"
               >
-                <Sparkles className="w-3.5 h-3.5" />
+                <Sparkles className="w-3.5 h-3.5" aria-hidden="true" />
                 <span>AI Consultant</span>
               </button>
             </div>
           </div>
 
           {/* Primary Navigation Sections */}
-          <div className="space-y-1.5">
+          <div className="space-y-1.5" role="menu" aria-label="Main site sections">
             {/* Home */}
             <button
               onClick={() => scrollToSection('hero')}
+              aria-label="Go to Home and Engineering Overview section"
+              role="menuitem"
               className="w-full min-h-[48px] text-left px-4 py-3 rounded-2xl font-bold text-[#0B1B2B] hover:bg-[#F5F6F3] active:bg-[#EBF3FF] flex items-center justify-between transition-colors"
             >
               <span className="text-sm">Home & Engineering Overview</span>
-              <ChevronRight className="w-4 h-4 text-[#6B747C]" />
+              <ChevronRight className="w-4 h-4 text-[#6B747C]" aria-hidden="true" />
             </button>
 
             {/* Products Accordion */}
             <div className="border border-[#E2E6EA] rounded-2xl overflow-hidden shadow-2xs">
               <button
                 onClick={() => toggleMobileAccordion('products')}
+                aria-expanded={mobileAccordion === 'products'}
+                aria-controls="mobile-products-accordion"
                 className="w-full min-h-[50px] text-left px-4 py-3.5 font-bold text-[#0B1B2B] bg-[#F8F9FA] active:bg-[#F0F2F5] flex items-center justify-between transition-colors"
               >
                 <div className="flex items-center gap-2">
-                  <div className="w-6 h-6 rounded-lg bg-[#EBF3FF] text-[#1677FF] flex items-center justify-center">
+                  <div className="w-6 h-6 rounded-lg bg-[#EBF3FF] text-[#1677FF] flex items-center justify-center" aria-hidden="true">
                     <Wind className="w-3.5 h-3.5" />
                   </div>
                   <span className="text-sm">Products & Systems Catalog</span>
                 </div>
-                <ChevronDown className={`w-4 h-4 text-[#6B747C] transition-transform duration-200 ${mobileAccordion === 'products' ? 'rotate-180 text-[#1677FF]' : ''}`} />
+                <ChevronDown className={`w-4 h-4 text-[#6B747C] transition-transform duration-200 ${mobileAccordion === 'products' ? 'rotate-180 text-[#1677FF]' : ''}`} aria-hidden="true" />
               </button>
 
               {mobileAccordion === 'products' && (
-                <div className="p-2.5 space-y-1.5 bg-white border-t border-[#E2E6EA]">
+                <div id="mobile-products-accordion" role="region" aria-label="Products and systems submenu" className="p-2.5 space-y-1.5 bg-white border-t border-[#E2E6EA]">
                   <div 
                     onClick={() => scrollToSection('products')}
+                    role="button"
+                    tabIndex={0}
+                    onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') scrollToSection('products'); }}
+                    aria-label="View Veloair Evaporative Coolers with 90 percent energy savings"
                     className="min-h-[50px] p-3 rounded-xl hover:bg-[#EBF3FF] active:bg-[#EBF3FF] cursor-pointer transition-colors"
                   >
                     <div className="font-bold text-xs text-[#0B1B2B] flex items-center justify-between">
@@ -799,6 +748,10 @@ export const Navbar: React.FC<NavbarProps> = ({
 
                   <div 
                     onClick={() => scrollToSection('products')}
+                    role="button"
+                    tabIndex={0}
+                    onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') scrollToSection('products'); }}
+                    aria-label="View Fire Fighting & FM-200 Clean Agent systems conforming to NFPA standards"
                     className="min-h-[50px] p-3 rounded-xl hover:bg-rose-50 active:bg-rose-50 cursor-pointer transition-colors"
                   >
                     <div className="font-bold text-xs text-[#0B1B2B] flex items-center justify-between">
@@ -810,6 +763,10 @@ export const Navbar: React.FC<NavbarProps> = ({
 
                   <div 
                     onClick={() => scrollToSection('products')}
+                    role="button"
+                    tabIndex={0}
+                    onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') scrollToSection('products'); }}
+                    aria-label="View Central HVAC and Double-Skin Air Handling Units with Carrier specifications"
                     className="min-h-[50px] p-3 rounded-xl hover:bg-[#EBF3FF] active:bg-[#EBF3FF] cursor-pointer transition-colors"
                   >
                     <div className="font-bold text-xs text-[#0B1B2B] flex items-center justify-between">
@@ -821,6 +778,10 @@ export const Navbar: React.FC<NavbarProps> = ({
 
                   <div 
                     onClick={() => scrollToSection('products')}
+                    role="button"
+                    tabIndex={0}
+                    onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') scrollToSection('products'); }}
+                    aria-label="View Electrical Switchboards and Power Distribution Panels"
                     className="min-h-[50px] p-3 rounded-xl hover:bg-amber-50 active:bg-amber-50 cursor-pointer transition-colors"
                   >
                     <div className="font-bold text-xs text-[#0B1B2B] flex items-center justify-between">
@@ -836,24 +797,28 @@ export const Navbar: React.FC<NavbarProps> = ({
             {/* Solutions & Industries */}
             <button
               onClick={() => scrollToSection('applications')}
+              aria-label="Navigate to Sector Solutions and Case Studies section"
+              role="menuitem"
               className="w-full min-h-[48px] text-left px-4 py-3 rounded-2xl font-bold text-[#0B1B2B] hover:bg-[#F5F6F3] active:bg-[#EBF3FF] flex items-center justify-between transition-colors"
             >
               <div className="flex items-center gap-2">
-                <div className="w-6 h-6 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center">
+                <div className="w-6 h-6 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center" aria-hidden="true">
                   <Factory className="w-3.5 h-3.5" />
                 </div>
                 <span className="text-sm">Sector Solutions & Case Studies</span>
               </div>
-              <ChevronRight className="w-4 h-4 text-[#6B747C]" />
+              <ChevronRight className="w-4 h-4 text-[#6B747C]" aria-hidden="true" />
             </button>
 
             {/* Energy Savings Calculator CTA */}
             <button
               onClick={() => scrollToSection('energy-calculator')}
+              aria-label="Open Energy and CFM Calculator to calculate power bill savings"
+              role="menuitem"
               className="w-full min-h-[52px] text-left px-4 py-3 rounded-2xl font-bold text-[#1677FF] bg-[#EBF3FF] active:bg-[#dbe9fe] border border-[#1677FF]/30 flex items-center justify-between transition-colors"
             >
               <div className="flex items-center gap-2.5">
-                <div className="w-7 h-7 rounded-xl bg-[#1677FF] text-white flex items-center justify-center">
+                <div className="w-7 h-7 rounded-xl bg-[#1677FF] text-white flex items-center justify-center" aria-hidden="true">
                   <Calculator className="w-4 h-4" />
                 </div>
                 <div>
@@ -861,56 +826,66 @@ export const Navbar: React.FC<NavbarProps> = ({
                   <div className="text-[11px] text-[#1677FF]/80 font-normal">Calculate instant 90% power bill savings</div>
                 </div>
               </div>
-              <ChevronRight className="w-4 h-4 text-[#1677FF]" />
+              <ChevronRight className="w-4 h-4 text-[#1677FF]" aria-hidden="true" />
             </button>
 
             {/* Technical Blueprints & Infographics */}
             <button
               onClick={() => scrollToSection('infographics')}
+              aria-label="Navigate to Interactive System Blueprints and Engineering Diagrams"
+              role="menuitem"
               className="w-full min-h-[48px] text-left px-4 py-3 rounded-2xl font-bold text-[#0B1B2B] hover:bg-[#F5F6F3] active:bg-[#EBF3FF] flex items-center justify-between transition-colors"
             >
               <div className="flex items-center gap-2">
-                <div className="w-6 h-6 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center">
+                <div className="w-6 h-6 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center" aria-hidden="true">
                   <Cpu className="w-3.5 h-3.5" />
                 </div>
                 <span className="text-sm">Interactive System Blueprints</span>
               </div>
-              <ChevronRight className="w-4 h-4 text-[#6B747C]" />
+              <ChevronRight className="w-4 h-4 text-[#6B747C]" aria-hidden="true" />
             </button>
 
             {/* Projects & Clients */}
             <button
               onClick={() => scrollToSection('clients')}
+              aria-label="Navigate to Prestigious Clients and Completed Projects section"
+              role="menuitem"
               className="w-full min-h-[48px] text-left px-4 py-3 rounded-2xl font-bold text-[#0B1B2B] hover:bg-[#F5F6F3] active:bg-[#EBF3FF] flex items-center justify-between transition-colors"
             >
               <div className="flex items-center gap-2">
-                <div className="w-6 h-6 rounded-lg bg-slate-100 text-[#0B1B2B] flex items-center justify-center">
+                <div className="w-6 h-6 rounded-lg bg-slate-100 text-[#0B1B2B] flex items-center justify-center" aria-hidden="true">
                   <Building2 className="w-3.5 h-3.5" />
                 </div>
                 <span className="text-sm">Prestigious Clients & Projects</span>
               </div>
-              <ChevronRight className="w-4 h-4 text-[#6B747C]" />
+              <ChevronRight className="w-4 h-4 text-[#6B747C]" aria-hidden="true" />
             </button>
 
             {/* About Company & Leadership Accordion */}
             <div className="border border-[#E2E6EA] rounded-2xl overflow-hidden shadow-2xs">
               <button
                 onClick={() => toggleMobileAccordion('about')}
+                aria-expanded={mobileAccordion === 'about'}
+                aria-controls="mobile-about-accordion"
                 className="w-full min-h-[50px] text-left px-4 py-3.5 font-bold text-[#0B1B2B] bg-[#F8F9FA] active:bg-[#F0F2F5] flex items-center justify-between transition-colors"
               >
                 <div className="flex items-center gap-2">
-                  <div className="w-6 h-6 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center">
+                  <div className="w-6 h-6 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center" aria-hidden="true">
                     <Award className="w-3.5 h-3.5" />
                   </div>
                   <span className="text-sm">About Company & Leadership</span>
                 </div>
-                <ChevronDown className={`w-4 h-4 text-[#6B747C] transition-transform duration-200 ${mobileAccordion === 'about' ? 'rotate-180 text-[#1677FF]' : ''}`} />
+                <ChevronDown className={`w-4 h-4 text-[#6B747C] transition-transform duration-200 ${mobileAccordion === 'about' ? 'rotate-180 text-[#1677FF]' : ''}`} aria-hidden="true" />
               </button>
 
               {mobileAccordion === 'about' && (
-                <div className="p-2.5 space-y-1.5 bg-white border-t border-[#E2E6EA]">
+                <div id="mobile-about-accordion" role="region" aria-label="About Company and Leadership submenu" className="p-2.5 space-y-1.5 bg-white border-t border-[#E2E6EA]">
                   <div 
                     onClick={() => scrollToSection('about-company')}
+                    role="button"
+                    tabIndex={0}
+                    onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') scrollToSection('about-company'); }}
+                    aria-label="Read about 30 plus years company engineering legacy since 1992"
                     className="min-h-[48px] p-3 rounded-xl hover:bg-[#EBF3FF] active:bg-[#EBF3FF] cursor-pointer transition-colors"
                   >
                     <div className="font-bold text-xs text-[#0B1B2B]">30+ Years Legacy (Since 1992)</div>
@@ -918,6 +893,10 @@ export const Navbar: React.FC<NavbarProps> = ({
                   </div>
                   <div 
                     onClick={() => scrollToSection('ceo-profile')}
+                    role="button"
+                    tabIndex={0}
+                    onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') scrollToSection('ceo-profile'); }}
+                    aria-label="Read CEO Mohammad Boota profile and Carrier International USA Apex Award details"
                     className="min-h-[48px] p-3 rounded-xl hover:bg-[#EBF3FF] active:bg-[#EBF3FF] cursor-pointer transition-colors"
                   >
                     <div className="font-bold text-xs text-[#0B1B2B]">CEO Mohammad Boota Profile</div>
@@ -925,6 +904,10 @@ export const Navbar: React.FC<NavbarProps> = ({
                   </div>
                   <div 
                     onClick={() => scrollToSection('roadmap')}
+                    role="button"
+                    tabIndex={0}
+                    onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') scrollToSection('roadmap'); }}
+                    aria-label="View 6-stage turnkey engineering project execution roadmap"
                     className="min-h-[48px] p-3 rounded-xl hover:bg-[#EBF3FF] active:bg-[#EBF3FF] cursor-pointer transition-colors"
                   >
                     <div className="font-bold text-xs text-[#1677FF]">🗺️ 6-Stage Project Execution Roadmap</div>
@@ -938,48 +921,62 @@ export const Navbar: React.FC<NavbarProps> = ({
             <div className="border border-[#E2E6EA] rounded-2xl overflow-hidden shadow-2xs">
               <button
                 onClick={() => toggleMobileAccordion('certs')}
+                aria-expanded={mobileAccordion === 'certs'}
+                aria-controls="mobile-certs-accordion"
                 className="w-full min-h-[50px] text-left px-4 py-3.5 font-bold text-[#0B1B2B] bg-[#F8F9FA] active:bg-[#F0F2F5] flex items-center justify-between transition-colors"
               >
                 <div className="flex items-center gap-2">
-                  <div className="w-6 h-6 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center">
+                  <div className="w-6 h-6 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center" aria-hidden="true">
                     <ShieldCheck className="w-3.5 h-3.5" />
                   </div>
                   <span className="text-sm">Certifications & Licenses</span>
                 </div>
-                <ChevronDown className={`w-4 h-4 text-[#6B747C] transition-transform duration-200 ${mobileAccordion === 'certs' ? 'rotate-180 text-[#1677FF]' : ''}`} />
+                <ChevronDown className={`w-4 h-4 text-[#6B747C] transition-transform duration-200 ${mobileAccordion === 'certs' ? 'rotate-180 text-[#1677FF]' : ''}`} aria-hidden="true" />
               </button>
 
               {mobileAccordion === 'certs' && (
-                <div className="p-2.5 space-y-1.5 bg-white border-t border-[#E2E6EA]">
+                <div id="mobile-certs-accordion" role="region" aria-label="Certifications and government licenses submenu" className="p-2.5 space-y-1.5 bg-white border-t border-[#E2E6EA]">
                   <div 
                     onClick={() => {
                       setMobileMenuOpen(false);
                       onOpenCertModal('pec-license');
                     }}
+                    role="button"
+                    tabIndex={0}
+                    onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { setMobileMenuOpen(false); onOpenCertModal('pec-license'); } }}
+                    aria-label="Inspect Pakistan Engineering Council License # 20000 Category C4"
                     className="min-h-[48px] p-3 rounded-xl hover:bg-[#EBF3FF] active:bg-[#EBF3FF] cursor-pointer flex items-center justify-between transition-colors"
                   >
                     <span className="font-bold text-xs text-[#0B1B2B]">PEC License # 20000 (Category C4)</span>
-                    <ExternalLink className="w-3.5 h-3.5 text-[#1677FF]" />
+                    <ExternalLink className="w-3.5 h-3.5 text-[#1677FF]" aria-hidden="true" />
                   </div>
                   <div 
                     onClick={() => {
                       setMobileMenuOpen(false);
                       onOpenCertModal('carrier-award');
                     }}
+                    role="button"
+                    tabIndex={0}
+                    onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { setMobileMenuOpen(false); onOpenCertModal('carrier-award'); } }}
+                    aria-label="Inspect Carrier USA Apex Global Leadership Award"
                     className="min-h-[48px] p-3 rounded-xl hover:bg-amber-50 active:bg-amber-50 cursor-pointer flex items-center justify-between transition-colors"
                   >
                     <span className="font-bold text-xs text-amber-800">Carrier USA Apex Global Award</span>
-                    <ExternalLink className="w-3.5 h-3.5 text-amber-700" />
+                    <ExternalLink className="w-3.5 h-3.5 text-amber-700" aria-hidden="true" />
                   </div>
                   <div 
                     onClick={() => {
                       setMobileMenuOpen(false);
                       onOpenCertModal('iso-9001');
                     }}
+                    role="button"
+                    tabIndex={0}
+                    onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { setMobileMenuOpen(false); onOpenCertModal('iso-9001'); } }}
+                    aria-label="Inspect ISO 9001:2008 Quality Management System Certificate"
                     className="min-h-[48px] p-3 rounded-xl hover:bg-[#EBF3FF] active:bg-[#EBF3FF] cursor-pointer flex items-center justify-between transition-colors"
                   >
                     <span className="font-bold text-xs text-[#0B1B2B]">ISO 9001:2008 Standard</span>
-                    <ExternalLink className="w-3.5 h-3.5 text-[#1677FF]" />
+                    <ExternalLink className="w-3.5 h-3.5 text-[#1677FF]" aria-hidden="true" />
                   </div>
                 </div>
               )}
@@ -988,56 +985,63 @@ export const Navbar: React.FC<NavbarProps> = ({
             {/* Resources & Insights */}
             <button
               onClick={() => scrollToSection('insights')}
+              aria-label="Navigate to Technical Resources and Articles section"
+              role="menuitem"
               className="w-full min-h-[48px] text-left px-4 py-3 rounded-2xl font-bold text-[#0B1B2B] hover:bg-[#F5F6F3] active:bg-[#EBF3FF] flex items-center justify-between transition-colors"
             >
               <div className="flex items-center gap-2">
-                <div className="w-6 h-6 rounded-lg bg-sky-50 text-sky-600 flex items-center justify-center">
+                <div className="w-6 h-6 rounded-lg bg-sky-50 text-sky-600 flex items-center justify-center" aria-hidden="true">
                   <FileText className="w-3.5 h-3.5" />
                 </div>
                 <span className="text-sm">Technical Resources & Articles</span>
               </div>
-              <ChevronRight className="w-4 h-4 text-[#6B747C]" />
+              <ChevronRight className="w-4 h-4 text-[#6B747C]" aria-hidden="true" />
             </button>
 
             {/* FAQs */}
             <button
               onClick={() => scrollToSection('faqs')}
+              aria-label="Navigate to Frequently Asked Questions section"
+              role="menuitem"
               className="w-full min-h-[48px] text-left px-4 py-3 rounded-2xl font-bold text-[#0B1B2B] hover:bg-[#F5F6F3] active:bg-[#EBF3FF] flex items-center justify-between transition-colors"
             >
               <div className="flex items-center gap-2">
-                <div className="w-6 h-6 rounded-lg bg-orange-50 text-orange-600 flex items-center justify-center">
+                <div className="w-6 h-6 rounded-lg bg-orange-50 text-orange-600 flex items-center justify-center" aria-hidden="true">
                   <HelpCircle className="w-3.5 h-3.5" />
                 </div>
                 <span className="text-sm">Frequently Asked Questions (FAQ)</span>
               </div>
-              <ChevronRight className="w-4 h-4 text-[#6B747C]" />
+              <ChevronRight className="w-4 h-4 text-[#6B747C]" aria-hidden="true" />
             </button>
 
             {/* Contact */}
             <button
               onClick={() => scrollToSection('contact')}
+              aria-label="Navigate to Nationwide Offices and Contact Information section"
+              role="menuitem"
               className="w-full min-h-[48px] text-left px-4 py-3 rounded-2xl font-bold text-[#0B1B2B] hover:bg-[#F5F6F3] active:bg-[#EBF3FF] flex items-center justify-between transition-colors"
             >
               <div className="flex items-center gap-2">
-                <div className="w-6 h-6 rounded-lg bg-rose-50 text-rose-600 flex items-center justify-center">
+                <div className="w-6 h-6 rounded-lg bg-rose-50 text-rose-600 flex items-center justify-center" aria-hidden="true">
                   <MapPin className="w-3.5 h-3.5" />
                 </div>
                 <span className="text-sm">Nationwide Offices & Contact</span>
               </div>
-              <ChevronRight className="w-4 h-4 text-[#6B747C]" />
+              <ChevronRight className="w-4 h-4 text-[#6B747C]" aria-hidden="true" />
             </button>
           </div>
 
           {/* Action CTAs in Mobile with high touch targets */}
-          <div className="pt-3 border-t border-[#E2E6EA] flex flex-col gap-3">
+          <div className="pt-3 border-t border-[#E2E6EA] flex flex-col gap-3" role="region" aria-label="Direct quotation and support actions">
             <button
               onClick={() => {
                 setMobileMenuOpen(false);
                 onOpenQuoteModal();
               }}
+              aria-label="Request a customized turnkey engineering project quote"
               className="w-full min-h-[50px] py-3.5 px-4 rounded-2xl bg-[#1677FF] hover:bg-blue-600 active:bg-blue-700 text-white font-bold text-sm text-center cursor-pointer shadow-md shadow-[#1677FF]/20 flex items-center justify-center gap-2 active:scale-[0.98] transition-all"
             >
-              <Sparkles className="w-4 h-4" />
+              <Sparkles className="w-4 h-4" aria-hidden="true" />
               <span>Get a Turnkey Engineering Quote</span>
             </button>
 
@@ -1045,25 +1049,28 @@ export const Navbar: React.FC<NavbarProps> = ({
               href={COMPANY_INFO.whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Connect directly on WhatsApp at +92 300 8425772"
               className="w-full min-h-[50px] py-3.5 px-4 rounded-2xl bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800 text-white font-bold text-sm text-center flex items-center justify-center gap-2 shadow-sm active:scale-[0.98] transition-all"
             >
               <span>Connect on WhatsApp (+92 300 8425772)</span>
             </a>
 
             {/* Direct Dial Options */}
-            <div className="grid grid-cols-2 gap-2 pt-1 text-xs">
+            <div className="grid grid-cols-2 gap-2 pt-1 text-xs" role="region" aria-label="Direct telephone numbers">
               <a
                 href="tel:+924235956625"
+                aria-label="Call Lahore Head Office directly at +92 42 35956625"
                 className="min-h-[44px] p-2.5 rounded-xl bg-[#F5F6F3] border border-[#E2E6EA] text-[#0B1B2B] hover:text-[#1677FF] flex items-center justify-center gap-1.5 font-bold transition-colors"
               >
-                <Phone className="w-3.5 h-3.5 text-[#1677FF]" />
+                <Phone className="w-3.5 h-3.5 text-[#1677FF]" aria-hidden="true" />
                 <span>Lahore Office</span>
               </a>
               <a
                 href="tel:+922134320217"
+                aria-label="Call Karachi Regional Office directly at +92 21 34320217"
                 className="min-h-[44px] p-2.5 rounded-xl bg-[#F5F6F3] border border-[#E2E6EA] text-[#0B1B2B] hover:text-[#1677FF] flex items-center justify-center gap-1.5 font-bold transition-colors"
               >
-                <Phone className="w-3.5 h-3.5 text-[#1677FF]" />
+                <Phone className="w-3.5 h-3.5 text-[#1677FF]" aria-hidden="true" />
                 <span>Karachi Office</span>
               </a>
             </div>
@@ -1077,9 +1084,9 @@ export const Navbar: React.FC<NavbarProps> = ({
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="min-h-[40px] min-w-[40px] rounded-xl bg-[#F5F6F3] border border-[#E2E6EA] text-[#0B1B2B] flex items-center justify-center hover:bg-[#1677FF] hover:text-white transition-all"
-                  aria-label="Facebook"
+                  aria-label="Official Facebook Page (opens in new tab)"
                 >
-                  <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                  <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
                     <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
                   </svg>
                 </a>
@@ -1088,16 +1095,16 @@ export const Navbar: React.FC<NavbarProps> = ({
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="min-h-[40px] min-w-[40px] rounded-xl bg-[#F5F6F3] border border-[#E2E6EA] text-[#0B1B2B] flex items-center justify-center hover:bg-[#0077b5] hover:text-white transition-all"
-                  aria-label="LinkedIn"
+                  aria-label="Official LinkedIn Company Profile (opens in new tab)"
                 >
-                  <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                  <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
                     <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
                   </svg>
                 </a>
               </div>
             </div>
           </div>
-        </div>
+        </nav>
       )}
     </header>
   );

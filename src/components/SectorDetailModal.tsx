@@ -9,11 +9,9 @@ import {
   BookOpen,
   ArrowRight,
   PhoneCall,
-  FileText,
   Clock,
   User,
   Calendar,
-  Building2,
   MapPin,
   Flame,
   Wind,
@@ -21,8 +19,6 @@ import {
   ChevronRight,
   ZoomIn,
   Sparkles,
-  ExternalLink,
-  Percent,
   Gauge
 } from 'lucide-react';
 import { IndustryApplication, SectorCaseStudy, SectorArticle } from '../types';
@@ -777,7 +773,8 @@ export const SectorDetailModal: React.FC<SectorDetailModalProps> = ({
                 />
                 <button
                   onClick={() => setLightboxImage(null)}
-                  className="absolute top-4 right-4 p-2 rounded-full bg-black/60 text-white hover:bg-black/80 transition-colors cursor-pointer"
+                  aria-label="Close photo preview"
+                  className="absolute top-4 right-4 min-h-[44px] min-w-[44px] rounded-full bg-black/70 text-white hover:bg-black/90 transition-colors cursor-pointer flex items-center justify-center border border-white/20"
                 >
                   <X className="w-5 h-5" />
                 </button>

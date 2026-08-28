@@ -4,10 +4,6 @@ import {
   Mail, 
   MapPin, 
   ShieldCheck, 
-  ExternalLink, 
-  Wind, 
-  Flame, 
-  Zap, 
   Award,
   ChevronRight,
   ArrowUp

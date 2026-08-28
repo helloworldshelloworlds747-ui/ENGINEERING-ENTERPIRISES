@@ -18,13 +18,7 @@ import {
   ArrowRight,
   Info,
   Sparkles,
-  Building2,
-  Filter,
-  Shield,
-  Clock,
-  Settings2,
-  ChevronRight,
-  Printer
+  Building2
 } from 'lucide-react';
 
 interface TechnicalInfographicsStudioProps {
@@ -111,13 +105,13 @@ export const TechnicalInfographicsStudio: React.FC<TechnicalInfographicsStudioPr
             whileTap={{ scale: 0.98 }}
             type="button"
             onClick={() => setActiveTab('psychrometric')}
-            className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-colors flex items-center gap-2 cursor-pointer ${
+            className={`min-h-[44px] px-4 py-2.5 rounded-xl text-xs font-bold transition-colors flex items-center gap-2 cursor-pointer ${
               activeTab === 'psychrometric'
                 ? 'bg-[#1677FF] text-white shadow-md shadow-[#1677FF]/20'
                 : 'text-[#6B747C] hover:text-[#0B1B2B] hover:bg-white'
             }`}
           >
-            <Thermometer className="w-3.5 h-3.5" />
+            <Thermometer className="w-4 h-4" />
             <span>Psychrometric & Unit Blueprint</span>
           </motion.button>
 
@@ -126,13 +120,13 @@ export const TechnicalInfographicsStudio: React.FC<TechnicalInfographicsStudioPr
             whileTap={{ scale: 0.98 }}
             type="button"
             onClick={() => setActiveTab('airflow')}
-            className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-colors flex items-center gap-2 cursor-pointer ${
+            className={`min-h-[44px] px-4 py-2.5 rounded-xl text-xs font-bold transition-colors flex items-center gap-2 cursor-pointer ${
               activeTab === 'airflow'
                 ? 'bg-[#1677FF] text-white shadow-md shadow-[#1677FF]/20'
                 : 'text-[#6B747C] hover:text-[#0B1B2B] hover:bg-white'
             }`}
           >
-            <Wind className="w-3.5 h-3.5" />
+            <Wind className="w-4 h-4" />
             <span>Industrial Airflow Dynamics</span>
           </motion.button>
 
@@ -141,13 +135,13 @@ export const TechnicalInfographicsStudio: React.FC<TechnicalInfographicsStudioPr
             whileTap={{ scale: 0.98 }}
             type="button"
             onClick={() => setActiveTab('comparison')}
-            className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-colors flex items-center gap-2 cursor-pointer ${
+            className={`min-h-[44px] px-4 py-2.5 rounded-xl text-xs font-bold transition-colors flex items-center gap-2 cursor-pointer ${
               activeTab === 'comparison'
                 ? 'bg-[#1677FF] text-white shadow-md shadow-[#1677FF]/20'
                 : 'text-[#6B747C] hover:text-[#0B1B2B] hover:bg-white'
             }`}
           >
-            <TrendingDown className="w-3.5 h-3.5" />
+            <TrendingDown className="w-4 h-4" />
             <span>Technology Benchmark</span>
           </motion.button>
 
@@ -156,13 +150,13 @@ export const TechnicalInfographicsStudio: React.FC<TechnicalInfographicsStudioPr
             whileTap={{ scale: 0.98 }}
             type="button"
             onClick={() => setActiveTab('fire-safety')}
-            className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-colors flex items-center gap-2 cursor-pointer ${
+            className={`min-h-[44px] px-4 py-2.5 rounded-xl text-xs font-bold transition-colors flex items-center gap-2 cursor-pointer ${
               activeTab === 'fire-safety'
                 ? 'bg-rose-600 text-white shadow-md shadow-rose-600/20'
                 : 'text-[#6B747C] hover:text-[#0B1B2B] hover:bg-white'
             }`}
           >
-            <Flame className="w-3.5 h-3.5" />
+            <Flame className="w-4 h-4" />
             <span>NFPA 13/291 Fire Network</span>
           </motion.button>
 
@@ -171,13 +165,13 @@ export const TechnicalInfographicsStudio: React.FC<TechnicalInfographicsStudioPr
             whileTap={{ scale: 0.98 }}
             type="button"
             onClick={() => setActiveTab('celdek')}
-            className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-colors flex items-center gap-2 cursor-pointer ${
+            className={`min-h-[44px] px-4 py-2.5 rounded-xl text-xs font-bold transition-colors flex items-center gap-2 cursor-pointer ${
               activeTab === 'celdek'
                 ? 'bg-amber-600 text-white shadow-md shadow-amber-600/20'
                 : 'text-[#6B747C] hover:text-[#0B1B2B] hover:bg-white'
             }`}
           >
-            <Layers className="w-3.5 h-3.5" />
+            <Layers className="w-4 h-4" />
             <span>CELdek 5090 Science</span>
           </motion.button>
         </div>
@@ -402,30 +396,81 @@ export const TechnicalInfographicsStudio: React.FC<TechnicalInfographicsStudioPr
                     onClick={() => setSelectedHotspot('celdek-pad')}
                   />
 
-                  {/* Hot Air Inflow Arrows (Left & Right) */}
-                  <path d="M 20 120 L 70 120" stroke="#f59e0b" strokeWidth="3" markerEnd="url(#arrow)" strokeDasharray="4 2" />
-                  <path d="M 20 160 L 70 160" stroke="#f59e0b" strokeWidth="3" strokeDasharray="4 2" />
-                  <text x="35" y="110" fontSize="9" fontWeight="bold" fill="#d97706">Hot Air (35°C–48°C)</text>
+                  {/* Hot Air Inflow Animated Wave Streams (Left & Right) */}
+                  <g>
+                    <path d="M 20 120 L 70 120" stroke="#f59e0b" strokeWidth="3.5" strokeLinecap="round" strokeDasharray="6 3">
+                      <animate attributeName="stroke-dashoffset" values="18;0" dur="0.75s" repeatCount="indefinite" />
+                    </path>
+                    <path d="M 20 160 L 70 160" stroke="#f59e0b" strokeWidth="3.5" strokeLinecap="round" strokeDasharray="6 3">
+                      <animate attributeName="stroke-dashoffset" values="18;0" dur="0.75s" repeatCount="indefinite" />
+                    </path>
+                    <polygon points="73,120 67,115 67,125" fill="#f59e0b" />
+                    <polygon points="73,160 67,155 67,165" fill="#f59e0b" />
+                    <text x="35" y="108" fontSize="9" fontWeight="bold" fill="#d97706">Hot Air (35°C–48°C)</text>
+                  </g>
 
-                  <path d="M 480 120 L 430 120" stroke="#f59e0b" strokeWidth="3" strokeDasharray="4 2" />
-                  <path d="M 480 160 L 430 160" stroke="#f59e0b" strokeWidth="3" strokeDasharray="4 2" />
-                  <text x="440" y="110" fontSize="9" fontWeight="bold" fill="#d97706" textAnchor="end">Hot Air Intake</text>
+                  <g>
+                    <path d="M 480 120 L 430 120" stroke="#f59e0b" strokeWidth="3.5" strokeLinecap="round" strokeDasharray="6 3">
+                      <animate attributeName="stroke-dashoffset" values="0;18" dur="0.75s" repeatCount="indefinite" />
+                    </path>
+                    <path d="M 480 160 L 430 160" stroke="#f59e0b" strokeWidth="3.5" strokeLinecap="round" strokeDasharray="6 3">
+                      <animate attributeName="stroke-dashoffset" values="0;18" dur="0.75s" repeatCount="indefinite" />
+                    </path>
+                    <polygon points="427,120 433,115 433,125" fill="#f59e0b" />
+                    <polygon points="427,160 433,115 433,165" fill="#f59e0b" />
+                    <text x="440" y="108" fontSize="9" fontWeight="bold" fill="#d97706" textAnchor="end">Hot Air Intake</text>
+                  </g>
+
+                  {/* Water Droplets Cascading down wet CELdek pads */}
+                  <g opacity="0.9">
+                    <circle cx="105" cy="85" r="2" fill="#38BDF8">
+                      <animate attributeName="cy" values="75;220;75" dur="2s" repeatCount="indefinite" />
+                      <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite" />
+                    </circle>
+                    <circle cx="105" cy="130" r="2" fill="#E0F2FE">
+                      <animate attributeName="cy" values="90;225;90" dur="1.7s" begin="0.5s" repeatCount="indefinite" />
+                      <animate attributeName="opacity" values="0.2;1;0.2" dur="1.7s" begin="0.5s" repeatCount="indefinite" />
+                    </circle>
+                    <circle cx="395" cy="90" r="2" fill="#38BDF8">
+                      <animate attributeName="cy" values="75;220;75" dur="1.9s" begin="0.2s" repeatCount="indefinite" />
+                      <animate attributeName="opacity" values="0.3;1;0.3" dur="1.9" begin="0.2s" repeatCount="indefinite" />
+                    </circle>
+                    <circle cx="395" cy="140" r="2" fill="#E0F2FE">
+                      <animate attributeName="cy" values="90;225;90" dur="2.1s" begin="0.7s" repeatCount="indefinite" />
+                      <animate attributeName="opacity" values="0.2;1;0.2" dur="2.1s" begin="0.7s" repeatCount="indefinite" />
+                    </circle>
+                  </g>
 
                   {/* Central Inverter Motor & Fan Turbine */}
                   <circle 
-                    cx="250" cy="140" r="48" 
+                    cx="250" cy="140" r="52" 
                     fill={selectedHotspot === 'axial-motor' ? '#dbeafe' : '#f1f5f9'} 
                     stroke={selectedHotspot === 'axial-motor' ? '#1677FF' : '#64748b'} 
                     strokeWidth="2.5" 
                     className="cursor-pointer transition-all"
                     onClick={() => setSelectedHotspot('axial-motor')}
                   />
-                  <circle cx="250" cy="140" r="14" fill="#0f172a" />
-                  {/* Fan Blades */}
-                  <path d="M 250 95 Q 265 115 250 140 Q 235 115 250 95" fill="#3b82f6" opacity="0.85" />
-                  <path d="M 250 185 Q 265 165 250 140 Q 235 165 250 185" fill="#3b82f6" opacity="0.85" />
-                  <path d="M 205 140 Q 225 155 250 140 Q 225 125 205 140" fill="#3b82f6" opacity="0.85" />
-                  <path d="M 295 140 Q 275 155 250 140 Q 275 125 295 140" fill="#3b82f6" opacity="0.85" />
+                  
+                  {/* Continuously Rotating Fan Blades Group */}
+                  <g className="cursor-pointer" onClick={() => setSelectedHotspot('axial-motor')}>
+                    <animateTransform
+                      attributeName="transform"
+                      type="rotate"
+                      from="0 250 140"
+                      to="360 250 140"
+                      dur="1s"
+                      repeatCount="indefinite"
+                    />
+                    {/* High-aerodynamic blades */}
+                    <path d="M 250 140 C 262 110 272 90 250 86 C 228 90 238 110 250 140 Z" fill="#0284c7" filter="drop-shadow(0 0 3px #38bdf8)" />
+                    <path d="M 250 140 C 280 152 300 162 304 140 C 300 118 280 128 250 140 Z" fill="#0284c7" filter="drop-shadow(0 0 3px #38bdf8)" />
+                    <path d="M 250 140 C 238 170 228 190 250 194 C 272 190 262 170 250 140 Z" fill="#0284c7" filter="drop-shadow(0 0 3px #38bdf8)" />
+                    <path d="M 250 140 C 220 128 200 118 196 140 C 200 162 220 152 250 140 Z" fill="#0284c7" filter="drop-shadow(0 0 3px #38bdf8)" />
+                  </g>
+
+                  {/* Stationary Center Hub */}
+                  <circle cx="250" cy="140" r="14" fill="#0f172a" stroke="#ffffff" strokeWidth="2" className="cursor-pointer" onClick={() => setSelectedHotspot('axial-motor')} />
+                  <circle cx="250" cy="140" r="5" fill="#38bdf8" />
 
                   {/* Bottom Deep Water Sump Tank */}
                   <rect 
@@ -447,7 +492,19 @@ export const TechnicalInfographicsStudio: React.FC<TechnicalInfographicsStudioPr
                     className="cursor-pointer"
                     onClick={() => setSelectedHotspot('discharge-duct')}
                   />
-                  <path d="M 250 280 L 250 330" stroke="#ffffff" strokeWidth="3" strokeDasharray="3 3" />
+                  
+                  {/* Dynamic Cool Flowing Air Waves Animation */}
+                  <g className="pointer-events-none">
+                    <path d="M 230 275 L 230 318" stroke="#ffffff" strokeWidth="2.5" strokeDasharray="6 4">
+                      <animate attributeName="stroke-dashoffset" values="20;0" dur="0.5s" repeatCount="indefinite" />
+                    </path>
+                    <path d="M 250 275 L 250 322" stroke="#e0f2fe" strokeWidth="3" strokeDasharray="8 4">
+                      <animate attributeName="stroke-dashoffset" values="24;0" dur="0.45s" repeatCount="indefinite" />
+                    </path>
+                    <path d="M 270 275 L 270 318" stroke="#ffffff" strokeWidth="2.5" strokeDasharray="6 4">
+                      <animate attributeName="stroke-dashoffset" values="20;0" dur="0.5s" repeatCount="indefinite" />
+                    </path>
+                  </g>
                   <text x="250" y="305" fontSize="10" fontWeight="bold" textAnchor="middle" fill="#ffffff">
                     Cool Fresh Supply Air (22°C–26°C)
                   </text>
@@ -1152,14 +1209,14 @@ export const TechnicalInfographicsStudio: React.FC<TechnicalInfographicsStudioPr
           <span>All thermodynamic models based on Stull Wet-Bulb equation & ASHRAE psychrometric standards.</span>
         </div>
 
-        <div className="flex items-center gap-3 w-full sm:w-auto">
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full sm:w-auto">
           {onOpenCalculator && (
             <button
               type="button"
               onClick={onOpenCalculator}
-              className="flex-1 sm:flex-initial px-4 py-2 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-300 text-xs font-bold transition-all flex items-center justify-center gap-1.5 cursor-pointer"
+              className="flex-1 sm:flex-initial min-h-[44px] px-5 py-2.5 rounded-xl bg-emerald-50 hover:bg-emerald-100 active:bg-emerald-200 text-emerald-800 border border-emerald-300 text-xs font-bold transition-all flex items-center justify-center gap-1.5 cursor-pointer shadow-2xs"
             >
-              <Zap className="w-3.5 h-3.5 text-emerald-600" />
+              <Zap className="w-4 h-4 text-emerald-600" />
               <span>Full Energy Savings Calculator</span>
             </button>
           )}
@@ -1168,10 +1225,10 @@ export const TechnicalInfographicsStudio: React.FC<TechnicalInfographicsStudioPr
             <button
               type="button"
               onClick={onConsultEngineering}
-              className="flex-1 sm:flex-initial px-4 py-2 rounded-xl bg-[#1677FF] hover:bg-blue-600 text-white text-xs font-bold transition-all shadow-md shadow-[#1677FF]/20 flex items-center justify-center gap-1.5 cursor-pointer"
+              className="flex-1 sm:flex-initial min-h-[44px] px-5 py-2.5 rounded-xl bg-[#1677FF] hover:bg-blue-600 active:bg-blue-700 text-white text-xs font-bold transition-all shadow-md shadow-[#1677FF]/20 flex items-center justify-center gap-1.5 cursor-pointer"
             >
               <span>Consult Engineering Team</span>
-              <ArrowRight className="w-3.5 h-3.5" />
+              <ArrowRight className="w-4 h-4" />
             </button>
           )}
         </div>

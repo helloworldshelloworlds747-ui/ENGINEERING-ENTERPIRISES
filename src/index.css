@@ -1,29 +1,30 @@
 @import "tailwindcss";
 
 @theme {
-  --color-base: #F5F6F3;
+  --color-base: #F8FAFD;
   --color-navy: #0B1B2B;
-  --color-navy-dark: #07121D;
-  --color-navy-light: #14273C;
+  --color-navy-dark: #06111C;
+  --color-navy-light: #122438;
   --color-accent: #1677FF;
   --color-accent-hover: #0E65E5;
   --color-accent-light: #EBF3FF;
-  --color-secondary: #6B747C;
-  --color-secondary-dark: #4A5157;
-  --color-secondary-light: #949DA5;
-  --color-secondary-subtle: #E2E6EA;
+  --color-accent-ice: #F0F6FF;
+  --color-secondary: #5C6B7A;
+  --color-secondary-dark: #374756;
+  --color-secondary-light: #8CA0B3;
+  --color-secondary-subtle: #E2E8F0;
 }
 
 @layer base {
   html {
     scroll-behavior: smooth;
     font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    background-color: #F5F6F3;
+    background-color: #F8FAFD;
     color: #0B1B2B;
   }
 
   body {
-    background-color: #F5F6F3;
+    background-color: #F8FAFD;
     color: #0B1B2B;
     overflow-x: hidden;
   }
@@ -33,39 +34,39 @@
   font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
 }
 
-/* Light Premium Engineering Card & Glass Utilities */
+/* Light Crisp Blue & White Engineering Card Utilities */
 .glass-panel-light {
-  background: rgba(255, 255, 255, 0.92);
+  background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid #E2E6EA;
+  border: 1px solid #E2E8F0;
 }
 
 .glass-panel-navy {
   background: #0B1B2B;
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(22, 119, 255, 0.25);
+  border: 1px solid rgba(22, 119, 255, 0.3);
 }
 
-.glass-panel-dark {
-  background: #0B1B2B;
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(107, 116, 124, 0.25);
+.glass-panel-blue {
+  background: linear-gradient(135deg, rgba(22, 119, 255, 0.06) 0%, rgba(240, 246, 255, 0.6) 100%);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(22, 119, 255, 0.2);
 }
 
 .card-engineering {
   background: #FFFFFF;
-  border: 1px solid #E2E6EA;
-  box-shadow: 0 4px 20px -4px rgba(11, 27, 43, 0.05);
+  border: 1px solid #E2E8F0;
+  box-shadow: 0 4px 20px -4px rgba(22, 119, 255, 0.06);
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .card-engineering:hover {
   transform: translateY(-3px);
   border-color: #1677FF;
-  box-shadow: 0 16px 32px -8px rgba(22, 119, 255, 0.12), 0 0 0 1px #1677FF;
+  box-shadow: 0 16px 32px -8px rgba(22, 119, 255, 0.15), 0 0 0 1px #1677FF;
 }
 
 .glass-card-hover {
@@ -73,31 +74,33 @@
 }
 .glass-card-hover:hover {
   transform: translateY(-4px);
-  box-shadow: 0 20px 40px -15px rgba(22, 119, 255, 0.15), 0 0 0 1px #1677FF;
+  box-shadow: 0 20px 40px -15px rgba(22, 119, 255, 0.18), 0 0 0 1px #1677FF;
 }
 
 .glow-ambient-accent {
-  box-shadow: 0 0 40px -10px rgba(22, 119, 255, 0.2);
-}
-
-.glow-ambient-cyan {
-  box-shadow: 0 0 40px -10px rgba(22, 119, 255, 0.18);
+  box-shadow: 0 0 40px -10px rgba(22, 119, 255, 0.25);
 }
 
 .glow-ambient-blue {
-  box-shadow: 0 0 50px -10px rgba(22, 119, 255, 0.22);
+  box-shadow: 0 0 50px -10px rgba(22, 119, 255, 0.28);
 }
 
-/* Shimmer metallic badge */
+/* Blue & White Metallic Badge */
 .metallic-badge {
-  background: linear-gradient(135deg, #FFFFFF 0%, #F5F6F3 100%);
-  border: 1px solid #E2E6EA;
+  background: linear-gradient(135deg, #FFFFFF 0%, #F0F6FF 100%);
+  border: 1px solid #D6E4FF;
   color: #0B1B2B;
 }
 
+.metallic-badge-blue {
+  background: linear-gradient(135deg, #EBF3FF 0%, #D6E4FF 100%);
+  border: 1px solid #ADC6FF;
+  color: #0958D9;
+}
+
 .metallic-badge-dark {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(22, 119, 255, 0.05) 100%);
+  border: 1px solid rgba(22, 119, 255, 0.3);
   backdrop-filter: blur(8px);
 }
 
@@ -107,10 +110,10 @@
   height: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #F5F6F3;
+  background: #F8FAFD;
 }
 ::-webkit-scrollbar-thumb {
-  background: #D4D9DE;
+  background: #C4D9F2;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
@@ -131,6 +134,25 @@
 
 .animate-gradient {
   animation: gradientShift 6s ease infinite;
+}
+
+@keyframes fanSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-fan-spin {
+  transform-origin: 250px 140px;
+  animation: fanSpin 1.2s linear infinite;
+}
+
+.animate-fan-spin-fast {
+  transform-origin: 250px 140px;
+  animation: fanSpin 0.75s linear infinite;
 }
 
 

@@ -6,25 +6,17 @@ import {
   Tag, 
   Clock, 
   Calendar, 
-  User, 
   ArrowRight, 
   Sparkles, 
   CheckCircle2, 
   Share2, 
   X, 
-  ExternalLink,
-  Zap,
-  Wrench,
-  Newspaper,
-  ShieldCheck,
-  HelpCircle,
-  ChevronDown,
-  ChevronUp,
-  Award,
-  Flame,
-  Wind,
-  Layers,
-  ArrowUpRight
+  Zap, 
+  Wrench, 
+  Newspaper, 
+  HelpCircle, 
+  ChevronDown, 
+  Award 
 } from 'lucide-react';
 import { Article, ArticleCategory } from '../types';
 import { ARTICLES_DATA, TECHNICAL_FAQS } from '../data/articlesData';
@@ -239,6 +231,14 @@ export const TechnicalInsights: React.FC<TechnicalInsightsProps> = ({
                   <img
                     src={featuredArticle.imageUrl}
                     alt={featuredArticle.title}
+                    referrerPolicy="no-referrer"
+                    loading="lazy"
+                    onError={(e) => {
+                      const fallback = ARTICLE_FALLBACK_IMAGES[featuredArticle.id] || "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=1200&q=80";
+                      if (e.currentTarget.src !== fallback) {
+                        e.currentTarget.src = fallback;
+                      }
+                    }}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0B1B2B]/60 via-transparent to-transparent" />
@@ -268,10 +268,10 @@ export const TechnicalInsights: React.FC<TechnicalInsightsProps> = ({
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               onClick={() => setSelectedCategory('all')}
-              className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-colors cursor-pointer ${
+              className={`min-h-[44px] px-4 py-2.5 rounded-xl text-xs font-bold transition-colors cursor-pointer flex items-center justify-center ${
                 selectedCategory === 'all'
                   ? 'bg-[#1677FF] text-white shadow-sm'
-                  : 'text-[#6B747C] hover:text-[#0B1B2B] hover:bg-[#F5F6F3]'
+                  : 'text-[#6B747C] hover:text-[#0B1B2B] hover:bg-[#F5F6F3] active:bg-[#E2E6EA]'
               }`}
             >
               All Insights ({ARTICLES_DATA.length})
@@ -280,10 +280,10 @@ export const TechnicalInsights: React.FC<TechnicalInsightsProps> = ({
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               onClick={() => setSelectedCategory('energy-saving')}
-              className={`px-3.5 py-1.5 rounded-xl text-xs font-bold flex items-center gap-1.5 transition-colors cursor-pointer ${
+              className={`min-h-[44px] px-4 py-2.5 rounded-xl text-xs font-bold flex items-center gap-1.5 transition-colors cursor-pointer ${
                 selectedCategory === 'energy-saving'
                   ? 'bg-emerald-600 text-white shadow-sm'
-                  : 'text-[#6B747C] hover:text-emerald-700 hover:bg-[#F5F6F3]'
+                  : 'text-[#6B747C] hover:text-emerald-700 hover:bg-[#F5F6F3] active:bg-[#E2E6EA]'
               }`}
             >
               <Zap className="w-3.5 h-3.5" />
@@ -293,10 +293,10 @@ export const TechnicalInsights: React.FC<TechnicalInsightsProps> = ({
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               onClick={() => setSelectedCategory('hvac-maintenance')}
-              className={`px-3.5 py-1.5 rounded-xl text-xs font-bold flex items-center gap-1.5 transition-colors cursor-pointer ${
+              className={`min-h-[44px] px-4 py-2.5 rounded-xl text-xs font-bold flex items-center gap-1.5 transition-colors cursor-pointer ${
                 selectedCategory === 'hvac-maintenance'
                   ? 'bg-[#1677FF] text-white shadow-sm'
-                  : 'text-[#6B747C] hover:text-[#1677FF] hover:bg-[#F5F6F3]'
+                  : 'text-[#6B747C] hover:text-[#1677FF] hover:bg-[#F5F6F3] active:bg-[#E2E6EA]'
               }`}
             >
               <Wrench className="w-3.5 h-3.5" />
@@ -306,10 +306,10 @@ export const TechnicalInsights: React.FC<TechnicalInsightsProps> = ({
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               onClick={() => setSelectedCategory('company-news')}
-              className={`px-3.5 py-1.5 rounded-xl text-xs font-bold flex items-center gap-1.5 transition-colors cursor-pointer ${
+              className={`min-h-[44px] px-4 py-2.5 rounded-xl text-xs font-bold flex items-center gap-1.5 transition-colors cursor-pointer ${
                 selectedCategory === 'company-news'
                   ? 'bg-amber-600 text-white shadow-sm'
-                  : 'text-[#6B747C] hover:text-amber-700 hover:bg-[#F5F6F3]'
+                  : 'text-[#6B747C] hover:text-amber-700 hover:bg-[#F5F6F3] active:bg-[#E2E6EA]'
               }`}
             >
               <Newspaper className="w-3.5 h-3.5" />
@@ -325,14 +325,15 @@ export const TechnicalInsights: React.FC<TechnicalInsightsProps> = ({
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search trends, NFPA, CELdek..."
-              className="w-full bg-white border border-[#E2E6EA] rounded-2xl pl-9 pr-8 py-2 text-xs text-[#0B1B2B] placeholder-[#6B747C] focus:outline-none focus:border-[#1677FF] transition-colors shadow-2xs"
+              className="w-full min-h-[44px] bg-white border border-[#E2E6EA] rounded-2xl pl-10 pr-10 py-2.5 text-xs text-[#0B1B2B] placeholder-[#6B747C] focus:outline-none focus:border-[#1677FF] transition-colors shadow-2xs"
             />
             {searchQuery && (
               <button
                 onClick={() => setSearchQuery('')}
-                className="absolute right-2.5 top-1/2 -translate-y-1/2 text-[#6B747C] hover:text-[#0B1B2B] cursor-pointer"
+                aria-label="Clear search"
+                className="absolute right-1 top-1/2 -translate-y-1/2 text-[#6B747C] hover:text-[#0B1B2B] min-h-[44px] min-w-[44px] flex items-center justify-center cursor-pointer"
               >
-                <X className="w-3.5 h-3.5" />
+                <X className="w-4 h-4" />
               </button>
             )}
           </div>
@@ -560,8 +561,9 @@ export const TechnicalInsights: React.FC<TechnicalInsightsProps> = ({
                     whileHover={{ scale: 1.08 }}
                     whileTap={{ scale: 0.92 }}
                     onClick={() => handleShareWhatsApp(activeArticle)}
-                    className="p-2 rounded-xl bg-white border border-[#E2E6EA] hover:bg-emerald-50 text-[#6B747C] hover:text-emerald-700 transition-colors cursor-pointer"
+                    className="min-h-[44px] min-w-[44px] p-2.5 rounded-xl bg-white border border-[#E2E6EA] hover:bg-emerald-50 text-[#6B747C] hover:text-emerald-700 transition-colors cursor-pointer flex items-center justify-center"
                     title="Share on WhatsApp"
+                    aria-label="Share on WhatsApp"
                   >
                     <Share2 className="w-4 h-4" />
                   </motion.button>
@@ -569,7 +571,8 @@ export const TechnicalInsights: React.FC<TechnicalInsightsProps> = ({
                     whileHover={{ scale: 1.08 }}
                     whileTap={{ scale: 0.92 }}
                     onClick={() => setActiveArticle(null)}
-                    className="p-2 rounded-xl bg-white border border-[#E2E6EA] hover:bg-slate-100 text-[#6B747C] hover:text-[#0B1B2B] transition-colors cursor-pointer"
+                    className="min-h-[44px] min-w-[44px] p-2.5 rounded-xl bg-white border border-[#E2E6EA] hover:bg-slate-100 text-[#6B747C] hover:text-[#0B1B2B] transition-colors cursor-pointer flex items-center justify-center"
+                    aria-label="Close article modal"
                   >
                     <X className="w-5 h-5" />
                   </motion.button>
@@ -687,20 +690,20 @@ export const TechnicalInsights: React.FC<TechnicalInsightsProps> = ({
               </div>
 
               {/* Modal Sticky Footer CTAs */}
-              <div className="p-4 sm:p-5 border-t border-[#E2E6EA] bg-[#F5F6F3] flex flex-wrap items-center justify-between gap-3 sticky bottom-0 z-20">
+              <div className="p-4 sm:p-5 border-t border-[#E2E6EA] bg-[#F5F6F3] flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 sticky bottom-0 z-20">
                 <div className="flex items-center gap-2">
                   <motion.button
                     whileHover={{ scale: 1.03 }}
                     whileTap={{ scale: 0.97 }}
                     onClick={handleCopyLink}
-                    className="px-3 py-2 rounded-xl bg-white border border-[#E2E6EA] hover:bg-slate-100 text-xs text-[#0B1B2B] font-semibold transition-colors flex items-center gap-1.5 cursor-pointer"
+                    className="min-h-[44px] px-3.5 py-2.5 rounded-xl bg-white border border-[#E2E6EA] hover:bg-slate-100 active:bg-slate-200 text-xs text-[#0B1B2B] font-semibold transition-colors flex items-center justify-center gap-1.5 cursor-pointer w-full sm:w-auto"
                   >
-                    <Share2 className="w-3.5 h-3.5 text-[#1677FF]" />
+                    <Share2 className="w-4 h-4 text-[#1677FF]" />
                     <span>{copiedLink ? 'Link Copied!' : 'Copy Article Link'}</span>
                   </motion.button>
                 </div>
 
-                <div className="flex items-center gap-2">
+                <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
                   {onOpenCalculator && (
                     <motion.button
                       whileHover={{ scale: 1.03 }}
@@ -709,9 +712,9 @@ export const TechnicalInsights: React.FC<TechnicalInsightsProps> = ({
                         setActiveArticle(null);
                         onOpenCalculator();
                       }}
-                      className="px-4 py-2 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-300 text-xs font-bold transition-colors flex items-center gap-1.5 cursor-pointer"
+                      className="min-h-[48px] px-4 py-3 rounded-xl bg-emerald-50 hover:bg-emerald-100 active:bg-emerald-200 text-emerald-800 border border-emerald-300 text-xs font-bold transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
                     >
-                      <Zap className="w-3.5 h-3.5 text-emerald-600" />
+                      <Zap className="w-4 h-4 text-emerald-600" />
                       <span>Calculate Energy Savings</span>
                     </motion.button>
                   )}
@@ -726,10 +729,10 @@ export const TechnicalInsights: React.FC<TechnicalInsightsProps> = ({
                         onSelectProductForQuote(`Inquiry regarding whitepaper: ${note}`);
                       }
                     }}
-                    className="px-4 py-2 rounded-xl bg-[#1677FF] hover:bg-blue-600 text-white text-xs font-bold transition-colors flex items-center gap-1.5 cursor-pointer shadow-md shadow-[#1677FF]/20"
+                    className="min-h-[48px] px-5 py-3 rounded-xl bg-[#1677FF] hover:bg-blue-600 active:bg-blue-700 text-white text-xs font-bold transition-colors flex items-center justify-center gap-1.5 cursor-pointer shadow-md shadow-[#1677FF]/20"
                   >
                     <span>Consult Engineering Team</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
+                    <ArrowRight className="w-4 h-4" />
                   </motion.button>
                 </div>
               </div>

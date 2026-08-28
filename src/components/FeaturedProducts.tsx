@@ -5,13 +5,10 @@ import {
   Flame, 
   Cpu, 
   Zap, 
-  Wrench, 
   ShieldCheck, 
-  ExternalLink, 
   Check, 
   ArrowRight,
   Eye,
-  Percent,
   X,
   Maximize2,
   PhoneCall,
@@ -54,7 +51,7 @@ export const FeaturedProducts: React.FC<FeaturedProductsProps> = ({ onSelectProd
   };
 
   return (
-    <section id="products" className="py-20 bg-[#F5F6F3] text-[#0B1B2B] relative border-b border-[#E2E6EA]">
+    <section id="products" className="py-20 bg-[#F8FAFD] text-[#0B1B2B] relative border-b border-[#E2E8F0]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
@@ -64,7 +61,7 @@ export const FeaturedProducts: React.FC<FeaturedProductsProps> = ({ onSelectProd
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4 }}
-            className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#EBF3FF] border border-[#1677FF]/20 text-[#1677FF] text-xs font-bold mb-3 shadow-2xs"
+            className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#EBF3FF] border border-[#1677FF]/25 text-[#1677FF] text-xs font-bold mb-3 shadow-2xs"
           >
             <ShieldCheck className="w-3.5 h-3.5" />
             <span>Industrial Grade & Turnkey Execution</span>
@@ -83,7 +80,7 @@ export const FeaturedProducts: React.FC<FeaturedProductsProps> = ({ onSelectProd
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4, delay: 0.2 }}
-            className="mt-3 text-[#6B747C] text-sm sm:text-base leading-relaxed"
+            className="mt-3 text-[#5C6B7A] text-sm sm:text-base leading-relaxed"
           >
             From energy-saving Veloair cooling units for Pakistan's severe climate to certified NFPA fire suppression and in-house electrical panels.
           </motion.p>
@@ -102,7 +99,7 @@ export const FeaturedProducts: React.FC<FeaturedProductsProps> = ({ onSelectProd
                   className={`relative flex items-center gap-2 px-4 py-2.5 min-h-[44px] shrink-0 rounded-xl text-xs sm:text-sm font-semibold transition-colors cursor-pointer ${
                     isActive
                       ? 'text-white font-bold'
-                      : 'bg-white text-[#6B747C] hover:text-[#0B1B2B] hover:bg-slate-50 border border-[#E2E6EA] shadow-2xs'
+                      : 'bg-white text-[#5C6B7A] hover:text-[#0B1B2B] hover:bg-[#F0F6FF] border border-[#E2E8F0] shadow-2xs'
                   }`}
                 >
                   {isActive && (
@@ -138,7 +135,7 @@ export const FeaturedProducts: React.FC<FeaturedProductsProps> = ({ onSelectProd
                 transition={{ duration: 0.35, ease: "easeOut" }}
                 whileHover={{ y: -6, transition: { duration: 0.2 } }}
                 onClick={() => setSelectedProduct(product)}
-                className="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl hover:shadow-[#0B1B2B]/8 flex flex-col cursor-pointer border border-[#E2E6EA] hover:border-[#1677FF] transition-colors"
+                className="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl hover:shadow-[#1677FF]/10 flex flex-col cursor-pointer border border-[#E2E8F0] hover:border-[#1677FF] transition-all"
               >
                 {/* Product Visual Area */}
                 <div className="relative h-64 w-full overflow-hidden bg-slate-100">
@@ -232,7 +229,7 @@ export const FeaturedProducts: React.FC<FeaturedProductsProps> = ({ onSelectProd
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
                       onClick={() => setSelectedProduct(product)}
-                      className="flex-1 py-2.5 px-3.5 rounded-xl bg-slate-50 hover:bg-slate-100 text-xs font-semibold text-[#0B1B2B] transition-colors flex items-center justify-center gap-1.5 cursor-pointer border border-[#E2E6EA]"
+                      className="flex-1 min-h-[44px] py-2.5 px-3.5 rounded-xl bg-slate-50 hover:bg-slate-100 text-xs font-semibold text-[#0B1B2B] transition-colors flex items-center justify-center gap-1.5 cursor-pointer border border-[#E2E6EA]"
                     >
                       <Eye className="w-3.5 h-3.5 text-[#1677FF]" />
                       <span>Specs</span>
@@ -244,17 +241,18 @@ export const FeaturedProducts: React.FC<FeaturedProductsProps> = ({ onSelectProd
                       href={`https://wa.me/923008425772?text=Hello%2C%20I%20am%20interested%20in%20${encodeURIComponent(product.name)}.%20Please%20send%20technical%20catalog%20and%20pricing.`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="py-2.5 px-3 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-emerald-700 border border-emerald-200 text-xs font-medium transition-colors flex items-center justify-center"
+                      className="min-h-[44px] min-w-[44px] py-2.5 px-3 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-emerald-700 border border-emerald-200 text-xs font-medium transition-colors flex items-center justify-center"
                       title="Quick WhatsApp Inquire"
+                      aria-label={`WhatsApp inquiry for ${product.name}`}
                     >
-                      <PhoneCall className="w-3.5 h-3.5" />
+                      <PhoneCall className="w-4 h-4" />
                     </motion.a>
 
                     <motion.button
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
                       onClick={() => onSelectProductForQuote(product.name)}
-                      className="flex-1 py-2.5 px-3.5 rounded-xl bg-[#1677FF] hover:bg-[#0E65E5] text-white font-bold text-xs transition-colors shadow-sm flex items-center justify-center gap-1.5 cursor-pointer"
+                      className="flex-1 min-h-[44px] py-2.5 px-3.5 rounded-xl bg-[#1677FF] hover:bg-[#0E65E5] active:bg-[#0B54C2] text-white font-bold text-xs transition-colors shadow-xs flex items-center justify-center gap-1.5 cursor-pointer"
                     >
                       <span>Get Quote</span>
                       <ArrowRight className="w-3.5 h-3.5" />
@@ -327,7 +325,8 @@ export const FeaturedProducts: React.FC<FeaturedProductsProps> = ({ onSelectProd
             >
               <button
                 onClick={() => setSelectedProduct(null)}
-                className="absolute top-4 right-4 p-2 rounded-full bg-slate-100 text-[#6B747C] hover:text-[#0B1B2B] hover:bg-slate-200 transition-colors cursor-pointer"
+                aria-label="Close product details modal"
+                className="absolute top-4 right-4 min-h-[44px] min-w-[44px] rounded-full bg-slate-100 text-[#6B747C] hover:text-[#0B1B2B] hover:bg-slate-200 transition-colors cursor-pointer flex items-center justify-center shadow-xs"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -470,7 +469,8 @@ export const FeaturedProducts: React.FC<FeaturedProductsProps> = ({ onSelectProd
                 <h4 className="text-sm font-bold text-[#0B1B2B]">{zoomedImage.title}</h4>
                 <button
                   onClick={() => setZoomedImage(null)}
-                  className="p-1.5 rounded-lg bg-white text-[#6B747C] hover:text-[#0B1B2B] border border-[#E2E6EA] cursor-pointer"
+                  aria-label="Close zoomed image view"
+                  className="min-h-[44px] min-w-[44px] rounded-xl bg-white text-[#6B747C] hover:text-[#0B1B2B] active:bg-slate-100 border border-[#E2E6EA] cursor-pointer flex items-center justify-center"
                 >
                   <X className="w-5 h-5" />
                 </button>

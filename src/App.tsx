@@ -48,7 +48,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#F5F6F3] text-[#0B1B2B] font-sans selection:bg-[#1677FF] selection:text-white relative pb-16 md:pb-0">
+    <div className="min-h-screen bg-[#F8FAFD] text-[#0B1B2B] font-sans selection:bg-[#1677FF] selection:text-white relative pb-16 md:pb-0">
       
       {/* Subtle Horizontal Scroll Progress Bar */}
       <ScrollProgressBar />

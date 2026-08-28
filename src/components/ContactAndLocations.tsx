@@ -5,14 +5,9 @@ import {
   Phone, 
   Mail, 
   Send, 
-  Clock, 
   CheckCircle2, 
   Building, 
   Factory, 
-  ShieldCheck,
-  Sparkles,
-  ExternalLink,
-  MessageSquare,
   Loader2
 } from 'lucide-react';
 import { COMPANY_INFO, OFFICE_LOCATIONS } from '../data/engineeringData';

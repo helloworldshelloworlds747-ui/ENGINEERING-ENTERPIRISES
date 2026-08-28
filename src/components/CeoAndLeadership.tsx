@@ -1,15 +1,10 @@
 import React, { useState } from 'react';
 import { 
   Award, 
-  ShieldCheck, 
-  Calendar, 
   Briefcase, 
   Quote, 
   Target, 
-  Eye, 
-  CheckCircle,
-  ExternalLink,
-  ChevronRight
+  Eye 
 } from 'lucide-react';
 import { CEO_PROFILE, PROJECT_IDEOLOGY, LIFECYCLE_STEPS } from '../data/engineeringData';
 

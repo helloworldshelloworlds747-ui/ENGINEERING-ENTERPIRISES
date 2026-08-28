@@ -1,15 +1,8 @@
 import React, { useState, useMemo } from 'react';
 import { 
   Zap, 
-  Percent, 
-  TrendingDown, 
   Calculator, 
-  CheckCircle2, 
-  Send, 
-  Wind, 
-  HelpCircle,
-  Flame,
-  FileSpreadsheet
+  Send 
 } from 'lucide-react';
 import { COMPANY_INFO } from '../data/engineeringData';
 
@@ -233,7 +226,7 @@ export const EnergyCalculator: React.FC<EnergyCalculatorProps> = ({ onOpenQuoteM
                 max="100"
                 value={electricityRatePKR}
                 onChange={(e) => setElectricityRatePKR(Number(e.target.value))}
-                className="w-full bg-white border border-[#E2E6EA] rounded-xl px-3.5 py-2.5 text-sm text-[#0B1B2B] focus:outline-none focus:border-[#1677FF] shadow-2xs font-semibold"
+                className="w-full min-h-[48px] bg-white border border-[#E2E6EA] rounded-xl px-4 py-3 text-base sm:text-sm text-[#0B1B2B] focus:outline-none focus:border-[#1677FF] shadow-2xs font-semibold"
               />
             </div>
           </div>

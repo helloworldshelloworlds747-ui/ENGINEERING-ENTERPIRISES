@@ -1,5 +1,5 @@
 import React from 'react';
-import { X, Award, ShieldCheck, CheckCircle2, Download, ExternalLink } from 'lucide-react';
+import { X, Award, ShieldCheck, CheckCircle2 } from 'lucide-react';
 import { CERTIFICATIONS, COMPANY_INFO } from '../data/engineeringData';
 
 interface CertificationsModalProps {
@@ -20,7 +20,8 @@ export const CertificationsModal: React.FC<CertificationsModalProps> = ({ certId
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 p-2 rounded-full bg-[#F5F6F3] text-[#6B747C] hover:text-[#0B1B2B] hover:bg-[#E2E6EA] transition-colors cursor-pointer"
+          aria-label="Close certificate viewer"
+          className="absolute top-4 right-4 min-h-[44px] min-w-[44px] rounded-full bg-[#F5F6F3] text-[#6B747C] hover:text-[#0B1B2B] hover:bg-[#E2E6EA] active:bg-[#D6DBE0] transition-colors cursor-pointer flex items-center justify-center border border-[#E2E6EA]"
         >
           <X className="w-5 h-5" />
         </button>
@@ -109,7 +110,7 @@ export const CertificationsModal: React.FC<CertificationsModalProps> = ({ certId
 
           <button
             onClick={onClose}
-            className="px-5 py-2.5 rounded-xl bg-[#1677FF] hover:bg-blue-600 text-white font-bold transition-colors cursor-pointer shadow-md shadow-[#1677FF]/20"
+            className="min-h-[44px] px-5 py-2.5 rounded-xl bg-[#1677FF] hover:bg-blue-600 active:bg-blue-700 text-white font-bold transition-colors cursor-pointer shadow-md shadow-[#1677FF]/20 flex items-center justify-center"
           >
             Close Viewer
           </button>

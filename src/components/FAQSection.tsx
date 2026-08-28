@@ -12,15 +12,12 @@ import {
   ArrowRight, 
   Sparkles, 
   PhoneCall, 
-  Share2, 
   Calculator, 
-  FileText, 
-  ExternalLink,
-  Tag,
-  Copy,
-  Check,
-  RotateCcw,
-  MessageSquare
+  Tag, 
+  Copy, 
+  Check, 
+  RotateCcw, 
+  MessageSquare 
 } from 'lucide-react';
 import { COMPREHENSIVE_FAQS, FAQ_CATEGORIES, FAQItem } from '../data/faqData';
 import { COMPANY_INFO } from '../data/engineeringData';
@@ -182,12 +179,13 @@ export const FAQSection: React.FC<FAQSectionProps> = ({
                   setActiveTag(null);
                 }}
                 placeholder="Search maintenance, electricity savings, NFPA, CELdek..."
-                className="w-full pl-10 pr-10 py-2.5 rounded-2xl bg-[#F5F6F3] border border-[#E2E6EA] text-[#0B1B2B] placeholder-[#6B747C] text-sm focus:outline-none focus:border-[#1677FF] transition-all"
+                className="w-full min-h-[48px] pl-10 pr-12 py-3 rounded-2xl bg-[#F5F6F3] border border-[#E2E6EA] text-[#0B1B2B] placeholder-[#6B747C] text-sm focus:outline-none focus:border-[#1677FF] transition-all shadow-2xs"
               />
               {searchQuery && (
                 <button
                   onClick={() => setSearchQuery('')}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-[#6B747C] hover:text-[#0B1B2B] text-xs px-1 py-0.5 cursor-pointer"
+                  aria-label="Clear search input"
+                  className="absolute right-1 top-1/2 -translate-y-1/2 text-[#6B747C] hover:text-[#0B1B2B] min-h-[44px] min-w-[44px] flex items-center justify-center cursor-pointer text-sm font-bold"
                 >
                   ✕
                 </button>
@@ -198,13 +196,13 @@ export const FAQSection: React.FC<FAQSectionProps> = ({
             <div className="flex items-center gap-2 self-end md:self-auto text-xs font-bold text-[#0B1B2B]">
               <button
                 onClick={handleExpandAll}
-                className="px-3.5 py-1.5 rounded-xl bg-[#F5F6F3] hover:bg-[#E2E6EA] border border-[#E2E6EA] text-[#0B1B2B] transition-colors cursor-pointer"
+                className="min-h-[44px] px-4 py-2.5 rounded-xl bg-[#F5F6F3] hover:bg-[#E2E6EA] active:bg-[#D6DBE0] border border-[#E2E6EA] text-[#0B1B2B] transition-colors cursor-pointer flex items-center justify-center"
               >
                 Expand All
               </button>
               <button
                 onClick={handleCollapseAll}
-                className="px-3.5 py-1.5 rounded-xl bg-[#F5F6F3] hover:bg-[#E2E6EA] border border-[#E2E6EA] text-[#0B1B2B] transition-colors cursor-pointer"
+                className="min-h-[44px] px-4 py-2.5 rounded-xl bg-[#F5F6F3] hover:bg-[#E2E6EA] active:bg-[#D6DBE0] border border-[#E2E6EA] text-[#0B1B2B] transition-colors cursor-pointer flex items-center justify-center"
               >
                 Collapse All
               </button>
@@ -222,10 +220,10 @@ export const FAQSection: React.FC<FAQSectionProps> = ({
                     setSelectedCategory(cat.id);
                     setActiveTag(null);
                   }}
-                  className={`flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+                  className={`min-h-[44px] flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
                     isActive
                       ? 'bg-[#1677FF] text-white shadow-md shadow-[#1677FF]/20'
-                      : 'bg-[#F5F6F3] hover:bg-slate-100 text-[#6B747C] hover:text-[#0B1B2B] border border-[#E2E6EA]'
+                      : 'bg-[#F5F6F3] hover:bg-slate-100 active:bg-slate-200 text-[#6B747C] hover:text-[#0B1B2B] border border-[#E2E6EA]'
                   }`}
                 >
                   {getCategoryIcon(cat.id)}
@@ -236,9 +234,9 @@ export const FAQSection: React.FC<FAQSectionProps> = ({
           </div>
 
           {/* Quick Topic Tag Chips */}
-          <div className="flex items-center gap-1.5 flex-wrap mt-3 pt-3 border-t border-[#E2E6EA] text-xs">
+          <div className="flex items-center gap-2 flex-wrap mt-3 pt-3 border-t border-[#E2E6EA] text-xs">
             <span className="text-[#6B747C] font-semibold flex items-center gap-1 mr-1 text-[11px]">
-              <Tag className="w-3 h-3 text-[#1677FF]" />
+              <Tag className="w-3.5 h-3.5 text-[#1677FF]" />
               <span>Popular Tags:</span>
             </span>
             {allTags.slice(0, 8).map((tag, idx) => {
@@ -250,10 +248,10 @@ export const FAQSection: React.FC<FAQSectionProps> = ({
                     setActiveTag(isTagActive ? null : tag);
                     setSelectedCategory('all');
                   }}
-                  className={`px-2.5 py-1 rounded-lg text-[11px] font-semibold transition-colors cursor-pointer ${
+                  className={`min-h-[38px] px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-colors cursor-pointer flex items-center ${
                     isTagActive
-                      ? 'bg-[#EBF3FF] text-[#1677FF] border border-[#1677FF]/40'
-                      : 'bg-[#F5F6F3] hover:bg-slate-100 text-[#6B747C] hover:text-[#0B1B2B] border border-[#E2E6EA]'
+                      ? 'bg-[#EBF3FF] text-[#1677FF] border border-[#1677FF]/40 font-bold'
+                      : 'bg-[#F5F6F3] hover:bg-slate-100 active:bg-slate-200 text-[#6B747C] hover:text-[#0B1B2B] border border-[#E2E6EA]'
                   }`}
                 >
                   #{tag}
@@ -263,9 +261,9 @@ export const FAQSection: React.FC<FAQSectionProps> = ({
             {activeTag && (
               <button
                 onClick={() => setActiveTag(null)}
-                className="text-xs text-[#1677FF] hover:underline ml-2 flex items-center gap-0.5 font-bold cursor-pointer"
+                className="min-h-[38px] px-2 text-xs text-[#1677FF] hover:underline ml-1 flex items-center gap-1 font-bold cursor-pointer"
               >
-                <RotateCcw className="w-3 h-3" />
+                <RotateCcw className="w-3.5 h-3.5" />
                 <span>Reset Tag</span>
               </button>
             )}
@@ -508,11 +506,11 @@ export const FAQSection: React.FC<FAQSectionProps> = ({
             </p>
           </div>
 
-          <div className="flex flex-wrap items-center justify-center gap-3 shrink-0">
+          <div className="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center justify-center gap-3 shrink-0 w-full sm:w-auto">
             {onOpenChat && (
               <button
                 onClick={onOpenChat}
-                className="px-4 py-2.5 rounded-2xl bg-[#F5F6F3] hover:bg-[#E2E6EA] text-[#0B1B2B] text-xs font-bold flex items-center gap-2 border border-[#E2E6EA] transition-colors cursor-pointer"
+                className="min-h-[48px] px-5 py-3 rounded-2xl bg-[#F5F6F3] hover:bg-[#E2E6EA] active:bg-[#D6DBE0] text-[#0B1B2B] text-xs font-bold flex items-center justify-center gap-2 border border-[#E2E6EA] transition-colors cursor-pointer"
               >
                 <MessageSquare className="w-4 h-4 text-[#1677FF]" />
                 <span>AI Engineering Assistant</span>
@@ -523,7 +521,7 @@ export const FAQSection: React.FC<FAQSectionProps> = ({
               href="https://wa.me/923008425772?text=Hello%2C%20I%20would%20like%20to%20consult%20with%20an%20engineering%20specialist%20regarding%20my%20factory%20project."
               target="_blank"
               rel="noopener noreferrer"
-              className="px-4 py-2.5 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold flex items-center gap-2 shadow-lg shadow-emerald-600/20 transition-all"
+              className="min-h-[48px] px-5 py-3 rounded-2xl bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800 text-white text-xs font-bold flex items-center justify-center gap-2 shadow-lg shadow-emerald-600/20 transition-all"
             >
               <PhoneCall className="w-4 h-4" />
               <span>WhatsApp Helpline</span>
@@ -532,7 +530,7 @@ export const FAQSection: React.FC<FAQSectionProps> = ({
             {onOpenQuoteModal && (
               <button
                 onClick={() => onOpenQuoteModal('Turnkey Industrial Consultation')}
-                className="px-4 py-2.5 rounded-2xl bg-[#1677FF] hover:bg-blue-600 text-white text-xs font-bold flex items-center gap-1.5 shadow-lg shadow-[#1677FF]/20 transition-all cursor-pointer"
+                className="min-h-[48px] px-5 py-3 rounded-2xl bg-[#1677FF] hover:bg-blue-600 active:bg-blue-700 text-white text-xs font-bold flex items-center justify-center gap-1.5 shadow-lg shadow-[#1677FF]/20 transition-all cursor-pointer"
               >
                 <span>Request Free Survey</span>
                 <ArrowRight className="w-3.5 h-3.5" />
